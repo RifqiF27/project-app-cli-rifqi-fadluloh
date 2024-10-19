@@ -5,7 +5,7 @@ import (
 	"main/models"
 )
 
-func PurchaseMenuController(menu *models.Menu) {
+func PurchaseMenuController(menu models.Item) {
 	defer fmt.Println("Proses pembelian selesai.")
 	var itemNames []string
 	var itemName string

@@ -3,6 +3,7 @@ package views
 import (
 	"fmt"
 	"main/models"
+	"strings"
 )
 
 func ShowMenu(menu *models.Menu) {
@@ -12,6 +13,7 @@ func ShowMenu(menu *models.Menu) {
 		return
 	}
 	fmt.Printf("\033[35m%-15s%-15s%-20s%-10s%-10s\033[0m\n", "Nama", "Jenis", "Harga", "Qty", "status")
+	fmt.Println(strings.Repeat("-", 75))
 	for _, s := range menu.GetFoods() {
 		var status, color string
 
@@ -23,5 +25,7 @@ func ShowMenu(menu *models.Menu) {
 			color = "\033[31m" // Warna merah
 		}
 		fmt.Printf("%s%-15s%-15s%-20.2f%-10d%-10s\033[0m\n", color, s.Name, s.Kinds, s.Price, s.Qty, status)
+		fmt.Println(strings.Repeat("-", 75))
+
 	}
 }

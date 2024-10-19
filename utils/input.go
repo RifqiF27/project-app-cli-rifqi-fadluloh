@@ -40,7 +40,7 @@ func InputFloat(prompt string) (float64, error) {
 	fmt.Scanln(&input)
 	value, err := strconv.ParseFloat(input, 64)
 	if err != nil {
-		return 0, errors.New("input bukan angka desimal")
+		return 0, errors.New("input bukan angka")
 	} else if value <= 0 {
 		return 0, errors.New("input harus lebih dari 0")
 	}

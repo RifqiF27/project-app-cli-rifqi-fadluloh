@@ -4,9 +4,10 @@ import (
 	"fmt"
 	"main/models"
 	"main/utils"
+	"strings"
 )
 
-func AddMenuController(menu *models.Menu) {
+func AddMenuController(menu models.Item) {
 	defer fmt.Println("Proses update menu selesai")
 	var name string
 	var kinds string
@@ -58,7 +59,7 @@ func AddMenuController(menu *models.Menu) {
 	fmt.Println("Menu berhasil ditambahkan")
 }
 
-func SearchMenuController(menu *models.Menu) {
+func SearchMenuController(menu models.Item) {
 	defer fmt.Println("Proses pencarian menu selesai.")
 	var name string
 
@@ -71,6 +72,7 @@ func SearchMenuController(menu *models.Menu) {
 		return
 	}
 	fmt.Printf("\033[35m%-15s%-15s%-20s%-10s%-10s\033[0m\n", "Nama", "Jenis", "Harga", "Qty", "status")
+	fmt.Println(strings.Repeat("-", 75))
 
 	var color string
 	var status string
@@ -82,10 +84,11 @@ func SearchMenuController(menu *models.Menu) {
 		color = "\033[31m" // Warna merah
 	}
 	fmt.Printf("%s%-15s%-15s%-20.2f%-10d%-10s\033[0m\n", color, f.Name, f.Kinds, f.Price, f.Qty, status)
+	fmt.Println(strings.Repeat("-", 75))
 
 }
 
-func DeleteMenuController(menu *models.Menu) {
+func DeleteMenuController(menu models.Item) {
 	defer fmt.Println("Proses hapus menu selesai.")
 	var name string
 	fmt.Print("Masukkan nama menu yang ingin dihapus: ")
@@ -99,7 +102,7 @@ func DeleteMenuController(menu *models.Menu) {
 	}
 }
 
-func UpdateMenuController(menu *models.Menu) {
+func UpdateMenuController(menu models.Item) {
 	defer fmt.Println("Proses update menu selesai")
 	var name string
 	var kinds string
@@ -116,6 +119,7 @@ func UpdateMenuController(menu *models.Menu) {
 		fmt.Println("Error:", err)
 	}
 	fmt.Printf("\033[35m%-15s%-15s%-20s%-10s%-10s\033[0m\n", "Nama", "Jenis", "Harga", "Qty", "status")
+	fmt.Println(strings.Repeat("-", 75))
 
 	var color string
 	var statusStr string
@@ -127,6 +131,7 @@ func UpdateMenuController(menu *models.Menu) {
 		color = "\033[31m" // Warna merah
 	}
 	fmt.Printf("%s%-15s%-15s%-20.2f%-10d%-10s\033[0m\n", color, f.Name, f.Kinds, f.Price, f.Qty, statusStr)
+	fmt.Println(strings.Repeat("-", 75))
 
 	name, err = utils.InputStr("Masukan nama makanan yang ingin diupdate!\n")
 	if err != nil {
